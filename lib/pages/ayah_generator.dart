@@ -65,7 +65,7 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                         } catch (e) {
                           return 'المرجو إدخال رقم من 1 إلى 50';
                         }
-        
+
                         if (a < 1 || a > 50) {
                           return 'المرجو إدخال رقم من 1 إلى 50';
                         }
@@ -83,15 +83,15 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                         ),
                         onPressed: () {
                           setState(() {
-                            
-        
-                          // Validate returns true if the form is valid, or false otherwise.
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => FinalAya()),
-                            );
-                          }
+                            // Validate returns true if the form is valid, or false otherwise.
+                            if (_formKey.currentState!.validate()) {
+                              a--;
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FinalAya()),
+                              );
+                            }
                           });
                         },
                         child: const Text(

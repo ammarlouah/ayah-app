@@ -18,7 +18,6 @@ class FinalAya extends StatefulWidget {
 class _FinalAyaState extends State<FinalAya> {
   @override
   Widget build(BuildContext context) {
-    a--;
     String aya = appbrain.getAya(a);
     return Scaffold(
       backgroundColor: Colors.grey[900],
@@ -29,7 +28,7 @@ class _FinalAyaState extends State<FinalAya> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'الآية : ${a}',
+                'الآية : ${a + 1}',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -106,23 +105,23 @@ class _FinalAyaState extends State<FinalAya> {
                 ),
                 onPressed: () => showDialog<String>(
                   context: context,
-                  builder: (BuildContext context) => SingleChildScrollView(
-                    child: AlertDialog(
-                      title: const Text(
-                        'التفسير المختصر',
-                        textAlign: TextAlign.center,
-                      ),
-                      content: Text(
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text(
+                      'التفسير المختصر',
+                      textAlign: TextAlign.center,
+                    ),
+                    content: SingleChildScrollView(
+                      child: Text(
                         appbrain.getTafsir(a),
                         style: TextStyle(fontSize: 30),
                       ),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('رجوع'),
-                        ),
-                      ],
                     ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('رجوع'),
+                      ),
+                    ],
                   ),
                 ),
                 child: const Text(
