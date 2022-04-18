@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ayah_app">
    <application
-        android:label="ayah_app"
+        android:label="Get Ayah"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,3 +1,4 @@
+import 'package:ayah_app/pages/final_aya.dart';
 import 'package:flutter/material.dart';
 
 class AyahGenerator extends StatefulWidget {
@@ -8,6 +9,7 @@ class AyahGenerator extends StatefulWidget {
 }
 
 final _formKey = GlobalKey<FormState>();
+late int a;
 
 class _AyahGeneratorState extends State<AyahGenerator> {
   @override
@@ -49,10 +51,11 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     // The validator receives the text that the user has entered.
                     validator: (value) {
-                      int a;
                       if (value == null || value.isEmpty) {
                         return 'المرجو إدخال رقم من 1 إلى 50';
                       }
@@ -68,25 +71,29 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                       return null;
                     },
                   ),
+                  SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
                         onPrimary: Colors.black,
+                        shadowColor: Colors.white,
                       ),
                       onPressed: () {
                         // Validate returns true if the form is valid, or false otherwise.
                         if (_formKey.currentState!.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => FinalAya()),
                           );
                         }
                       },
                       child: const Text(
                         'بحث',
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
                       ),
                     ),
                   ),
