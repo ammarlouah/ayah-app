@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:ayah_app/ayat.dart';
 import 'ayah_generator.dart';
 import 'package:clipboard/clipboard.dart';
+import 'package:ayah_app/app_brain.dart';
 
-String aya = ayat(a);
+AppBrain appbrain = AppBrain();
 
 class FinalAya extends StatefulWidget {
   const FinalAya({Key? key}) : super(key: key);
@@ -15,7 +18,8 @@ class FinalAya extends StatefulWidget {
 class _FinalAyaState extends State<FinalAya> {
   @override
   Widget build(BuildContext context) {
-    aya = ayat(a);
+    a--;
+    String aya = appbrain.getAya(a);
     return Scaffold(
       backgroundColor: Colors.grey[900],
       body: Padding(
@@ -38,7 +42,7 @@ class _FinalAyaState extends State<FinalAya> {
                 margin: EdgeInsets.all(10.0),
                 child: ListTile(
                   title: Text(
-                    aya,
+                    aya + '\n' + appbrain.getSrc(a),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 50,
@@ -94,6 +98,40 @@ class _FinalAyaState extends State<FinalAya> {
                     );
                   });
                 },
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => SingleChildScrollView(
+                    child: AlertDialog(
+                      title: const Text(
+                        'التفسير المختصر',
+                        textAlign: TextAlign.center,
+                      ),
+                      content: Text(
+                        appbrain.getTafsir(a),
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('رجوع'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'تفسير الآية',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ],
           ),

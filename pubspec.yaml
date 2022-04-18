@@ -39,6 +39,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   # cupertino_icons: ^0.1.2
   # clipboard_manager: ^0.0.1
   # The "flutter_lints" package below contains a set of recommended lints to
