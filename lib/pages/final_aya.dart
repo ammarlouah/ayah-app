@@ -25,7 +25,7 @@ class _FinalAyaState extends State<FinalAya> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'الآية',
+                'الآية : ${a}',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
