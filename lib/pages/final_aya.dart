@@ -1,12 +1,7 @@
-import 'package:ayah_app/pages/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:ayah_app/ayat.dart';
 import 'ayah_generator.dart';
 import 'package:clipboard/clipboard.dart';
-
-void main() {
-  print(a);
-}
 
 String aya = ayat(a);
 
@@ -20,6 +15,7 @@ class FinalAya extends StatefulWidget {
 class _FinalAyaState extends State<FinalAya> {
   @override
   Widget build(BuildContext context) {
+    aya = ayat(a);
     return Scaffold(
       backgroundColor: Colors.grey[900],
       body: Padding(
@@ -61,21 +57,23 @@ class _FinalAyaState extends State<FinalAya> {
                 ),
               ),
               onPressed: () {
-                FlutterClipboard.copy(aya);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: const Text(
-                      'تم نسخ الآية إ',
-                      style: TextStyle(
-                        fontSize: 20,
+                setState(() {
+                  FlutterClipboard.copy(aya);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text(
+                        'تم نسخ الآية إ',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    /*action: SnackBarAction(
+                      /*action: SnackBarAction(
                       label: 'Action',
                       onPressed: () {},
                     ),*/
-                  ),
-                );
+                    ),
+                  );
+                });
               },
             ),
             SizedBox(height: 20),
@@ -88,10 +86,12 @@ class _FinalAyaState extends State<FinalAya> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => AyahGenerator()),
-                );
+                setState(() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => AyahGenerator()),
+                  );
+                });
               },
             ),
           ],

@@ -81,6 +81,9 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                         shadowColor: Colors.white,
                       ),
                       onPressed: () {
+                        setState(() {
+                          
+
                         // Validate returns true if the form is valid, or false otherwise.
                         if (_formKey.currentState!.validate()) {
                           Navigator.pushReplacement(
@@ -88,6 +91,7 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                             MaterialPageRoute(builder: (context) => FinalAya()),
                           );
                         }
+                        });
                       },
                       child: const Text(
                         'بحث',
