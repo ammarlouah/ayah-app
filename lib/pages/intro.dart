@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
 
+import 'ayah_generator.dart';
+
 class Intro extends StatelessWidget {
   const Intro({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.grey[900],
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'لدي 50 آية قرآنية , في الصفحة التالية أدخل رقما من 1 إلى 50 و ستظهر لك آية اعتبرها رسالة من الله لك',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            Card(
+                margin: EdgeInsets.all(10.0),
+                child: ListTile(
+                  title: Text(
+                    'لدي 50 آية قرآنية \n في الصفحة التالية أدخل رقما من 1 إلى 50 و ستظهر لك آية اعتبرها رسالة من الله لك',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 50,
+                      fontFamily: 'Lateef',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),),
             SizedBox(height: 60),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => AyahGenerator()),
+  );
+              },
               color: Colors.white,
               child: Text(
                 'إبدأ',
