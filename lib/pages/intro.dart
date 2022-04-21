@@ -14,46 +14,48 @@ class _IntroState extends State<Intro> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: ListTile(
-                  title: Text(
-                    'لدي 50 آية قرآنية \n في الصفحة التالية أدخل رقما من 1 إلى 50 و ستظهر لك آية اعتبرها رسالة من الله لك',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 50,
-                      fontFamily: 'Lateef',
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Card(
+                  margin: EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Text(
+                      'لدي 50 آية قرآنية \n في الصفحة التالية أدخل رقما من 1 إلى 50 و ستظهر لك آية اعتبرها رسالة من الله لك',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 50,
+                        fontFamily: 'Lateef',
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-              SizedBox(height: 60),
-              FlatButton(
-                onPressed: () {
-                  setState(() {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => AyahGenerator()),
-                    );
-                  });
-                },
-                color: Colors.white,
-                child: Text(
-                  'إبدأ',
-                  style: TextStyle(
-                    fontSize: 30,
+                SizedBox(height: 60),
+                FlatButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => AyahGenerator()),
+                      );
+                    });
+                  },
+                  color: Colors.white,
+                  child: Text(
+                    'إبدأ',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-                textColor: Colors.black,
-              )
-            ],
+                  textColor: Colors.black,
+                )
+              ],
+            ),
           ),
         ),
       ),
