@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'ayah_generator.dart';
 
 class Intro extends StatefulWidget {
@@ -22,38 +21,39 @@ class _IntroState extends State<Intro> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card(
-                  margin: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
                   child: ListTile(
                     title: Text(
                       'لدي 50 آية قرآنية \n في الصفحة التالية أدخل رقما من 1 إلى 50 و ستظهر لك آية اعتبرها رسالة من الله لك',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 50,
+                        fontSize: 20, // Changed from 50 to avoid overflow
                         fontFamily: 'Lateef',
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(height: 60),
-                FlatButton(
+                const SizedBox(height: 60),
+                TextButton(
                   onPressed: () {
-                    setState(() {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => AyahGenerator()),
-                      );
-                    });
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => AyahGenerator()),
+                    );
                   },
-                  color: Colors.white,
-                  child: Text(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+                  ),
+                  child: const Text(
                     'إبدأ',
                     style: TextStyle(
                       fontSize: 30,
+                      color: Colors.black,
                     ),
                   ),
-                  textColor: Colors.black,
-                )
+                ),
               ],
             ),
           ),

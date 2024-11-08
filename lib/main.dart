@@ -1,6 +1,6 @@
-import 'package:ayah_app/pages/ayah_generator.dart';
-import 'package:ayah_app/pages/final_aya.dart';
-import 'package:ayah_app/pages/intro.dart';
+import 'package:new_app/pages/ayah_generator.dart';
+import 'package:new_app/pages/final_aya.dart';
+import 'package:new_app/pages/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 

@@ -1,10 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:ayah_app/ayat.dart';
+import 'package:new_app/ayat.dart';
 import 'ayah_generator.dart';
 import 'package:clipboard/clipboard.dart';
-import 'package:ayah_app/app_brain.dart';
+import 'package:new_app/app_brain.dart';
 
 AppBrain appbrain = AppBrain();
 
@@ -30,80 +29,78 @@ class _FinalAyaState extends State<FinalAya> {
               children: [
                 Text(
                   'الآية : ${a + 1}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     fontFamily: 'Lateef',
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 60),
+                const SizedBox(height: 60),
                 Card(
-                  margin: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
                   child: ListTile(
                     title: Text(
-                      aya + '\n' + appbrain.getSrc(a),
-                      style: TextStyle(
+                      '${aya}\n${appbrain.getSrc(a)}',
+                      style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 50,
+                        fontSize: 20, // Adjusted from 50 for better layout
                         fontFamily: 'Lateef',
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-                FlatButton(
-                  color: Colors.white,
-                  child: Text(
-                    'نسخ الآية',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      FlutterClipboard.copy(aya);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text(
-                            'تم نسخ الآية إ',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                          /*action: SnackBarAction(
-                          label: 'Action',
-                          onPressed: () {},
-                        ),*/
-                        ),
-                      );
-                    });
-                  },
-                ),
-                SizedBox(height: 20),
-                FlatButton(
-                  color: Colors.white,
-                  child: Text(
-                    'ابحث عن آية أخرى',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AyahGenerator()),
-                      );
-                    });
-                  },
-                ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  ),
+                  onPressed: () {
+                    FlutterClipboard.copy(aya);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'تم نسخ الآية',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'نسخ الآية',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => AyahGenerator()),
+                    );
+                  },
+                  child: const Text(
+                    'ابحث عن آية أخرى',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   ),
                   onPressed: () => showDialog<String>(
                     context: context,
@@ -115,7 +112,7 @@ class _FinalAyaState extends State<FinalAya> {
                       content: SingleChildScrollView(
                         child: Text(
                           appbrain.getTafsir(a),
-                          style: TextStyle(fontSize: 30),
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ),
                       actions: <Widget>[

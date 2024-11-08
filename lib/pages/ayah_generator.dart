@@ -1,6 +1,5 @@
 import 'dart:math';
-
-import 'package:ayah_app/pages/final_aya.dart';
+import 'package:new_app/pages/final_aya.dart';
 import 'package:flutter/material.dart';
 
 class AyahGenerator extends StatefulWidget {
@@ -26,23 +25,23 @@ class _AyahGeneratorState extends State<AyahGenerator> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card(
-                  margin: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
                   child: ListTile(
                     title: Text(
                       '{إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحافِظُونَ}',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 50,
+                        fontSize: 20, // Adjusted from 50 to fit smaller screens
                         fontFamily: 'Lateef',
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(height: 60),
+                const SizedBox(height: 60),
                 Text(
                   'أدخل رقما من 1 إلى 50',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     fontFamily: 'Lateef',
@@ -55,10 +54,9 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
-                        // The validator receives the text that the user has entered.
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'المرجو إدخال رقم من 1 إلى 50';
@@ -68,34 +66,29 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                           } catch (e) {
                             return 'المرجو إدخال رقم من 1 إلى 50';
                           }
-
                           if (a < 1 || a > 50) {
                             return 'المرجو إدخال رقم من 1 إلى 50';
                           }
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            onPrimary: Colors.black,
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black,
                             shadowColor: Colors.white,
                           ),
                           onPressed: () {
-                            setState(() {
-                              // Validate returns true if the form is valid, or false otherwise.
-                              if (_formKey.currentState!.validate()) {
-                                a--;
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => FinalAya()),
-                                );
-                              }
-                            });
+                            if (_formKey.currentState!.validate()) {
+                              a--; // Assuming `a--` is intentional
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => FinalAya()),
+                              );
+                            }
                           },
                           child: const Text(
                             'بحث',
@@ -110,8 +103,8 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.black,
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                     shadowColor: Colors.white,
                   ),
                   onPressed: () {
@@ -127,7 +120,7 @@ class _AyahGeneratorState extends State<AyahGenerator> {
                       fontSize: 30,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
